@@ -231,7 +231,7 @@ export default function App() {
                 hasQuantity={attendancePackage.hasQuantity}
               />
 
-              {/* Premium Packages - Radio Selection */}
+              {/* Premium Packages - Radio Selection with De-selection */}
               {premiumPackages.map((pkg) => (
                 <PackageCard
                   key={pkg.id}
@@ -239,20 +239,20 @@ export default function App() {
                   price={pkg.price}
                   description={pkg.description}
                   selected={selectedPremiumPackage === pkg.id}
-                  onSelect={() => setSelectedPremiumPackage(pkg.id)}
+                  onSelect={() => setSelectedPremiumPackage(prev => prev === pkg.id ? null : pkg.id)}
                   hasQuantity={pkg.hasQuantity}
                   highlighted={pkg.highlighted}
                 />
               ))}
             </div>
 
-            {/* Total Amount - Reserved Space with Smooth Animation */}
-            <div className="mt-6 min-h-[114px] flex items-center">
-              <div className={`w-full p-6 bg-gray-50 rounded-lg border border-gray-200 transition-all duration-500 ease-in-out ${
-                isFormValid 
-                  ? 'opacity-100 scale-100 translate-y-0' 
-                  : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
-              }`}>
+            {/* Total Amount - Slide-Up Animation */}
+            <div className={`transition-all duration-700 ease-in-out overflow-hidden ${
+              isFormValid 
+                ? 'max-h-40 opacity-100 mt-6 translate-y-0' 
+                : 'max-h-0 opacity-0 mt-0 translate-y-10'
+            }`}>
+              <div className="p-6 bg-gray-50 rounded-lg border border-gray-200">
                 <div className="flex justify-between items-center text-lg">
                   <span className="font-semibold">Total Amount:</span>
                   <span className="text-2xl font-bold text-[#064c4c]">
