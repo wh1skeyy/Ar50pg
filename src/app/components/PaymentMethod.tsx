@@ -1,4 +1,4 @@
-import { CreditCard, Smartphone, QrCode } from "lucide-react";
+import { CreditCard, Smartphone, QrCode, WalletCards } from "lucide-react";
 
 interface PaymentMethodProps {
   selected: string;
@@ -8,9 +8,9 @@ interface PaymentMethodProps {
 export function PaymentMethod({ selected, onSelect }: PaymentMethodProps) {
   const methods = [
     { id: "card", label: "Credit/Debit Card", icon: CreditCard },
+    { id: "paypal", label: "Paypal", icon: WalletCards },
     { id: "apple", label: "Apple Pay", icon: Smartphone },
     { id: "google", label: "Google Pay", icon: Smartphone },
-    { id: "bank", label: "Bank Transfer (QR)", icon: QrCode },
   ];
 
   return (

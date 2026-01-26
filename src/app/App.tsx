@@ -24,18 +24,20 @@ export default function App() {
     phone: "",
   });
 
-  const [selectedPackage, setSelectedPackage] = useState<string>("");
+  const [isAttendanceSelected, setIsAttendanceSelected] = useState(false);
   const [attendanceQuantity, setAttendanceQuantity] = useState(1);
+  const [selectedPremiumPackage, setSelectedPremiumPackage] = useState<string | null>(null);
   const [paymentMethod, setPaymentMethod] = useState<string>("card");
 
-  const packages = [
-    {
-      id: "attendance",
-      title: "ATTENDANCE TICKET",
-      price: 500,
-      description: "Access to the ceremony",
-      hasQuantity: true,
-    },
+  const attendancePackage = {
+    id: "attendance",
+    title: "ATTENDANCE TICKET",
+    price: 500,
+    description: "Access to the ceremony",
+    hasQuantity: true,
+  };
+
+  const premiumPackages = [
     {
       id: "elite",
       title: "ELITE PACKAGE",
@@ -61,19 +63,36 @@ export default function App() {
   ];
 
   const calculateTotal = () => {
-    const pkg = packages.find((p) => p.id === selectedPackage);
-    if (!pkg) return 0;
-    if (pkg.id === "attendance") {
-      return pkg.price * attendanceQuantity;
+    let total = 0;
+    
+    if (isAttendanceSelected) {
+      total += attendancePackage.price * attendanceQuantity;
     }
-    return pkg.price;
+    
+    if (selectedPremiumPackage) {
+      const pkg = premiumPackages.find((p) => p.id === selectedPremiumPackage);
+      if (pkg) {
+        total += pkg.price;
+      }
+    }
+    
+    return total;
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", { formData, selectedPackage, paymentMethod, total: calculateTotal() });
+    console.log("Form submitted:", { 
+      formData, 
+      isAttendanceSelected,
+      attendanceQuantity,
+      selectedPremiumPackage,
+      paymentMethod, 
+      total: calculateTotal() 
+    });
     alert("Registration submitted successfully!");
   };
+
+  const isFormValid = isAttendanceSelected || selectedPremiumPackage;
 
   return (
     <div className="min-h-screen flex flex-col lg:flex-row" style={{ fontFamily: "'Be Vietnam Pro', sans-serif" }}>
@@ -200,23 +219,34 @@ export default function App() {
             <h2 className="text-xl font-semibold text-gray-900 mb-4">Select Your Package</h2>
             
             <div className="space-y-4">
-              {packages.map((pkg) => (
+              {/* Attendance Ticket - Toggle Selection */}
+              <PackageCard
+                title={attendancePackage.title}
+                price={attendancePackage.price}
+                description={attendancePackage.description}
+                selected={isAttendanceSelected}
+                onSelect={() => setIsAttendanceSelected(!isAttendanceSelected)}
+                quantity={attendanceQuantity}
+                onQuantityChange={setAttendanceQuantity}
+                hasQuantity={attendancePackage.hasQuantity}
+              />
+
+              {/* Premium Packages - Radio Selection */}
+              {premiumPackages.map((pkg) => (
                 <PackageCard
                   key={pkg.id}
                   title={pkg.title}
                   price={pkg.price}
                   description={pkg.description}
-                  selected={selectedPackage === pkg.id}
-                  onSelect={() => setSelectedPackage(pkg.id)}
-                  quantity={attendanceQuantity}
-                  onQuantityChange={setAttendanceQuantity}
+                  selected={selectedPremiumPackage === pkg.id}
+                  onSelect={() => setSelectedPremiumPackage(pkg.id)}
                   hasQuantity={pkg.hasQuantity}
                   highlighted={pkg.highlighted}
                 />
               ))}
             </div>
 
-            {selectedPackage && (
+            {isFormValid && (
               <div className="mt-6 p-6 bg-gray-50 rounded-lg border border-gray-200">
                 <div className="flex justify-between items-center text-lg">
                   <span className="font-semibold">Total Amount:</span>
@@ -238,7 +268,7 @@ export default function App() {
           <div className="space-y-4">
             <button
               type="submit"
-              disabled={!selectedPackage}
+              disabled={!isFormValid}
               className="w-full bg-[#064c4c] text-white py-4 rounded-lg font-semibold text-lg hover:bg-[#053a3a] transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed"
             >
               Pay & Register

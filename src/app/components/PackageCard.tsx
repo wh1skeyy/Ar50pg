@@ -29,16 +29,16 @@ export function PackageCard({
       className={`relative border-2 rounded-lg p-6 cursor-pointer transition-all duration-200 ${
         selected
           ? highlighted
-            ? "border-yellow-500 bg-yellow-50/50"
+            ? "border-[#d4af37] bg-yellow-50/50"
             : "border-[#064c4c] bg-teal-50/30"
           : highlighted
-          ? "border-yellow-200 hover:border-yellow-400"
+          ? "border-[#E2CA78] hover:border-yellow-400"
           : "border-gray-200 hover:border-gray-300"
       }`}
     >
       {highlighted && (
         <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-yellow-500 text-white px-4 py-1 rounded-full text-xs font-semibold">
-          ULTIMATE CHOICE
+          PREMIUM
         </div>
       )}
       
