@@ -95,9 +95,9 @@ export default function App() {
   const isFormValid = isAttendanceSelected || selectedPremiumPackage;
 
   return (
-    <div className="min-h-screen flex flex-col lg:flex-row" style={{ fontFamily: "'Be Vietnam Pro', sans-serif" }}>
+    <div className="h-screen lg:overflow-hidden flex flex-col lg:flex-row" style={{ fontFamily: "'Be Vietnam Pro', sans-serif" }}>
       {/* Left Panel - Registration Form */}
-      <div className="w-full lg:w-1/2 bg-white p-8 lg:p-16 overflow-y-auto">
+      <div className="w-full lg:w-1/2 bg-white p-8 lg:p-16 lg:h-full lg:overflow-y-auto">
         <form onSubmit={handleSubmit} className="max-w-2xl mx-auto space-y-10">
           {/* Header */}
           <div>
@@ -245,28 +245,28 @@ export default function App() {
                 />
               ))}
             </div>
-
-            {/* Total Amount - Slide-Up Animation */}
-            <div className={`transition-all duration-700 ease-in-out overflow-hidden ${
-              isFormValid 
-                ? 'max-h-40 opacity-100 mt-6 translate-y-0' 
-                : 'max-h-0 opacity-0 mt-0 translate-y-10'
-            }`}>
-              <div className="p-6 bg-gray-50 rounded-lg border border-gray-200">
-                <div className="flex justify-between items-center text-lg">
-                  <span className="font-semibold">Total Amount:</span>
-                  <span className="text-2xl font-bold text-[#064c4c]">
-                    ${calculateTotal().toLocaleString()}
-                  </span>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Payment Method */}
           <div className="space-y-6">
             <h2 className="text-xl font-semibold text-gray-900 mb-4">Payment Method</h2>
             <PaymentMethod selected={paymentMethod} onSelect={setPaymentMethod} />
+          </div>
+
+          {/* Total Amount - Slide-Up Animation at Bottom */}
+          <div className={`transition-all duration-300 ease-out overflow-hidden ${
+            isFormValid 
+              ? 'opacity-100 translate-y-0 max-h-40 mt-8' 
+              : 'opacity-0 translate-y-10 max-h-0 mt-0 pointer-events-none'
+          }`}>
+            <div className="p-6 bg-gray-50 rounded-lg border border-gray-200">
+              <div className="flex justify-between items-center text-lg">
+                <span className="font-semibold">Total Amount:</span>
+                <span className="text-2xl font-bold text-[#064c4c]">
+                  ${calculateTotal().toLocaleString()}
+                </span>
+              </div>
+            </div>
           </div>
 
           {/* Submit Button */}
@@ -291,7 +291,7 @@ export default function App() {
 
       {/* Right Panel - Branding & Event Info */}
       <div 
-        className="w-full lg:w-1/2 bg-[#064c4c] text-white p-8 lg:p-16 relative overflow-hidden"
+        className="w-full lg:w-1/2 bg-[#064c4c] text-white p-8 lg:p-16 relative overflow-hidden lg:h-full lg:overflow-y-auto"
         style={{ 
           backgroundImage: `linear-gradient(rgba(6, 76, 76, 0.75), rgba(6, 76, 76, 0.93)), url('https://wh1skeybucket.s3.ap-southeast-2.amazonaws.com/marina-bay-sands-en-singapur-11789.jpg')`,
           backgroundSize: 'cover',
