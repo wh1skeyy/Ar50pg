@@ -246,16 +246,19 @@ export default function App() {
               ))}
             </div>
 
-            <div className={`transition-all duration-500 ease-in-out overflow-hidden p-6 bg-gray-50 rounded-lg border border-gray-200 ${
-              isFormValid 
-                ? 'opacity-100 max-h-40 mt-6 translate-y-0' 
-                : 'opacity-0 max-h-0 mt-0 -translate-y-4'
-            }`}>
-              <div className="flex justify-between items-center text-lg">
-                <span className="font-semibold">Total Amount:</span>
-                <span className="text-2xl font-bold text-[#064c4c]">
-                  ${calculateTotal().toLocaleString()}
-                </span>
+            {/* Total Amount - Reserved Space with Smooth Animation */}
+            <div className="mt-6 min-h-[114px] flex items-center">
+              <div className={`w-full p-6 bg-gray-50 rounded-lg border border-gray-200 transition-all duration-500 ease-in-out ${
+                isFormValid 
+                  ? 'opacity-100 scale-100 translate-y-0' 
+                  : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
+              }`}>
+                <div className="flex justify-between items-center text-lg">
+                  <span className="font-semibold">Total Amount:</span>
+                  <span className="text-2xl font-bold text-[#064c4c]">
+                    ${calculateTotal().toLocaleString()}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -287,19 +290,14 @@ export default function App() {
       </div>
 
       {/* Right Panel - Branding & Event Info */}
-      <div className="w-full lg:w-1/2 bg-[#064c4c] text-white p-8 lg:p-16 relative overflow-hidden">
-        {/* Fixed Background Layer */}
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundImage: `linear-gradient(rgba(6, 76, 76, 0.75), rgba(6, 76, 76, 0.93)), url('https://wh1skeybucket.s3.ap-southeast-2.amazonaws.com/marina-bay-sands-en-singapur-11789.jpg')`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundAttachment: 'fixed',
-          }}
-        ></div>
-
-        {/* Content Wrapper */}
+      <div 
+        className="w-full lg:w-1/2 bg-[#064c4c] text-white p-8 lg:p-16 relative overflow-hidden"
+        style={{ 
+          backgroundImage: `linear-gradient(rgba(6, 76, 76, 0.75), rgba(6, 76, 76, 0.93)), url('https://wh1skeybucket.s3.ap-southeast-2.amazonaws.com/marina-bay-sands-en-singapur-11789.jpg')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
         <div className="max-w-2xl mx-auto space-y-12 relative z-10">
           {/* Logo */}
           <div>
