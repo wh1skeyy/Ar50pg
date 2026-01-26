@@ -239,23 +239,21 @@ export default function App() {
                   price={pkg.price}
                   description={pkg.description}
                   selected={selectedPremiumPackage === pkg.id}
-                  onSelect={() => setSelectedPremiumPackage(pkg.id)}
+                  onSelect={() => setSelectedPremiumPackage(prev => prev === pkg.id ? null : pkg.id)}
                   hasQuantity={pkg.hasQuantity}
                   highlighted={pkg.highlighted}
                 />
               ))}
             </div>
 
-            {isFormValid && (
-              <div className="mt-6 p-6 bg-gray-50 rounded-lg border border-gray-200">
-                <div className="flex justify-between items-center text-lg">
-                  <span className="font-semibold">Total Amount:</span>
-                  <span className="text-2xl font-bold text-[#064c4c]">
-                    ${calculateTotal().toLocaleString()}
-                  </span>
-                </div>
+            <div className="mt-6 p-6 bg-gray-50 rounded-lg border border-gray-200">
+              <div className="flex justify-between items-center text-lg">
+                <span className="font-semibold">Total Amount:</span>
+                <span className="text-2xl font-bold text-[#064c4c]">
+                  ${calculateTotal().toLocaleString()}
+                </span>
               </div>
-            )}
+            </div>
           </div>
 
           {/* Payment Method */}
