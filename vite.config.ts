@@ -10,6 +10,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  base: "/ar50pg2",
   resolve: {
     alias: {
       // Alias @ to the src directory
