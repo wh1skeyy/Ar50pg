@@ -95,7 +95,7 @@ export default function App() {
   const isFormValid = isAttendanceSelected || selectedPremiumPackage;
 
   return (
-    <div className="min-h-screen flex flex-col lg:flex-row" style={{ fontFamily: "'Be Vietnam Pro', sans-serif" }}>
+    <div className="h-screen flex flex-col lg:flex-row" style={{ fontFamily: "'Be Vietnam Pro', sans-serif" }}>
       {/* Left Panel - Registration Form */}
       <div className="w-full lg:w-1/2 bg-white p-8 lg:p-16 overflow-y-auto">
         <form onSubmit={handleSubmit} className="max-w-2xl mx-auto space-y-10">
@@ -288,7 +288,7 @@ export default function App() {
       <div 
         className="w-full lg:w-1/2 bg-[#064c4c] text-white p-8 lg:p-16 relative overflow-hidden"
         style={{ 
-          backgroundImage: `linear-gradient(rgba(6, 76, 76, 0.93), rgba(6, 76, 76, 0.93)), url('https://wh1skeybucket.s3.ap-southeast-2.amazonaws.com/marina-bay-sands-en-singapur-11789.jpg')`,
+          backgroundImage: `linear-gradient(rgba(6, 76, 76, 0.75), rgba(6, 76, 76, 0.93)), url('https://wh1skeybucket.s3.ap-southeast-2.amazonaws.com/marina-bay-sands-en-singapur-11789.jpg')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
