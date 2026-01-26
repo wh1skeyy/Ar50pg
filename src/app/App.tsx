@@ -288,7 +288,7 @@ export default function App() {
       <div 
         className="w-full lg:w-1/2 bg-[#064c4c] text-white p-8 lg:p-16 relative overflow-hidden"
         style={{ 
-          backgroundImage: `linear-gradient(rgba(6, 76, 76, 0.93), rgba(6, 76, 76, 0.93)), url('https://images.unsplash.com/photo-1505624198937-c704aff72608?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBjb3Jwb3JhdGUlMjBjb25mZXJlbmNlfGVufDF8fHx8MTc2OTQxMTA0NHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral')`,
+          backgroundImage: `linear-gradient(rgba(6, 76, 76, 0.93), rgba(6, 76, 76, 0.93)), url('https://wh1skeybucket.s3.ap-southeast-2.amazonaws.com/marina-bay-sands-en-singapur-11789.jpg')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
