@@ -1,0 +1,34 @@
+
+import { XCircle, RefreshCw } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+
+export default function FailedPage() {
+    const navigate = useNavigate();
+
+    return (
+        <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4 font-sans">
+            <div className="max-w-md w-full bg-white rounded-xl shadow-lg p-8 text-center space-y-6 animate-in fade-in zoom-in duration-300">
+                <div className="mx-auto w-20 h-20 bg-red-100 rounded-full flex items-center justify-center">
+                    <XCircle className="w-10 h-10 text-red-600" />
+                </div>
+
+                <div>
+                    <h1 className="text-2xl font-bold text-gray-900 mb-2">Payment Failed</h1>
+                    <p className="text-gray-600">
+                        We were unable to process your payment. Please check your payment details and try again.
+                    </p>
+                </div>
+
+                <div className="pt-4 border-t border-gray-100">
+                    <button
+                        onClick={() => navigate("/")}
+                        className="w-full flex items-center justify-center gap-2 bg-red-600 text-white py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors"
+                    >
+                        <RefreshCw className="w-4 h-4" />
+                        Try Again
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
+}
