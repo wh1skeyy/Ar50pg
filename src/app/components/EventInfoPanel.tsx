@@ -6,7 +6,7 @@ export function EventInfoPanel() {
         <div
             className="w-full lg:w-1/2 bg-[#064c4c] text-white p-8 lg:p-16 relative overflow-hidden"
             style={{
-                backgroundImage: `linear-gradient(rgba(6, 76, 76, 0.75), rgba(6, 76, 76, 0.93)), url('https://wh1skeybucket.s3.ap-southeast-2.amazonaws.com/marina-bay-sands-en-singapur-11789.jpg')`,
+                backgroundImage: `linear-gradient(rgba(3, 62, 62, 0.9), rgba(3, 62, 62, 0.93)), url('https://wh1skeybucket.s3.ap-southeast-2.amazonaws.com/marina-bay-sands-en-singapur-11789.jpg')`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
             }}
