@@ -266,7 +266,7 @@ export default function RegistrationPage() {
                             <div className="flex justify-between items-center text-lg">
                                 <span className="font-semibold">Total Amount:</span>
                                 <span className="text-2xl font-bold text-[#064c4c]">
-                                    ${calculateTotal().toLocaleString()}
+                                    ${calculateTotal().toLocaleString('en-US')}
                                 </span>
                             </div>
                         </div>

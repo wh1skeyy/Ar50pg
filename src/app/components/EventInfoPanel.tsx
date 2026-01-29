@@ -51,7 +51,18 @@ export function EventInfoPanel() {
                 <div className="space-y-4">
                     <div className="flex items-center gap-4 text-lg">
                         <MapPin className="w-6 h-6 text-yellow-400 flex-shrink-0" />
-                        <span className="font-medium">Singapore</span>
+                        <span className="font-medium">Harvard Faculty Club, Boston</span>
+                    </div>
+
+                    <div className="flex items-center gap-4 text-lg">
+                        <Calendar className="w-6 h-6 text-yellow-400 flex-shrink-0" />
+                        <span className="font-medium">July 2nd, 2026</span>
+                    </div>
+                </div>
+                <div className="space-y-4">
+                    <div className="flex items-center gap-4 text-lg">
+                        <MapPin className="w-6 h-6 text-yellow-400 flex-shrink-0" />
+                        <span className="font-medium">Shangri-La Hotel, Singapore</span>
                     </div>
 
                     <div className="flex items-center gap-4 text-lg">

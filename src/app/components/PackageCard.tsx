@@ -60,7 +60,7 @@ export function PackageCard({
 
       <div className="flex items-center justify-between">
         <div className="text-2xl font-bold text-[#064c4c]">
-          ${price.toLocaleString()}
+          ${price.toLocaleString('en-US')}
         </div>
 
         {hasQuantity && selected && (
